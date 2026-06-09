@@ -177,7 +177,7 @@ async function fetchTranslation(word) {
   return translation === word ? "" : translation;
 }
 
-async async function autoFill() {
+async function autoFill() {
   const word = wordInput.value.trim();
   if (!word) {
     autoFillStatus.textContent = "請先輸入英文單字再按自動填入。";
