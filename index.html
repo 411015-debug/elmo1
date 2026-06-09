@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELMO 單字卡</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <h1>ELMO 單字卡</h1>
+        <p>點擊卡片翻頁。可在管理頁新增單字、翻譯、詞性、例句、字根分析。</p>
+      </div>
+      <nav>
+        <button id="btn-study" class="nav-button active">學習頁</button>
+        <button id="btn-manage" class="nav-button">管理頁</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="study-page" class="page active-page">
+        <div class="card-area">
+          <div id="word-card" class="word-card">
+            <div class="card-face card-front" id="card-front"></div>
+            <div class="card-face card-back" id="card-back"></div>
+          </div>
+        </div>
+
+        <div class="study-controls">
+          <button id="prev-word">上一個</button>
+          <button id="next-word">下一個</button>
+          <button id="random-word">隨機</button>
+        </div>
+      </section>
+
+      <section id="manage-page" class="page">
+        <div class="panel">
+          <div class="panel-heading">
+            <h2>單字管理</h2>
+            <p>新增或編輯單字。按「自動填入」可呼叫公開 API 協助填資料。</p>
+          </div>
+
+          <form id="word-form" class="word-form">
+            <label>
+              英文單字
+              <input id="word-input" type="text" placeholder="請輸入英文單字" autocomplete="off" />
+            </label>
+            <label>
+              翻譯
+              <input id="translation-input" type="text" placeholder="例如：蘋果" />
+            </label>
+            <label>
+              詞性
+              <input id="pos-input" type="text" placeholder="例如：noun" />
+            </label>
+            <label>
+              例句
+              <textarea id="example-input" rows="3" placeholder="例如：I eat an apple every day."></textarea>
+            </label>
+            <label>
+              字根分析
+              <textarea id="root-input" rows="3" placeholder="例如：apple = 蘋果，無字根"></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button type="button" id="auto-fill">自動填入</button>
+              <button type="submit" id="save-word">儲存單字</button>
+              <button type="button" id="clear-form" class="secondary">清除</button>
+            </div>
+            <p id="auto-fill-status" class="status-text"></p>
+          </form>
+        </div>
+
+        <div class="panel word-list-panel">
+          <div class="panel-heading">
+            <h2>目前單字庫</h2>
+            <p>點選單字可立即跳至學習頁。</p>
+          </div>
+          <ul id="word-list" class="word-list"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
