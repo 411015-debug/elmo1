@@ -96,14 +96,14 @@ main {
 .card-area {
   display: grid;
   place-items: center;
-  min-height: 420px;
+  min-height: 480px;
   padding: 18px;
 }
 
 .word-card {
   position: relative;
-  width: min(420px, 100%);
-  height: 340px;
+  width: min(520px, 100%);
+  height: 400px;
   perspective: 1400px;
   transform-style: preserve-3d;
 }
@@ -119,7 +119,7 @@ main {
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 15%, transparent 85%, rgba(255, 255, 255, 0.04) 100%),
     linear-gradient(180deg, #5d3f2b 0%, #3d2a1f 58%, #2d1b12 100%);
   border: 1px solid rgba(255, 235, 206, 0.16);
-  padding: 32px;
+  padding: 34px;
   color: #f5e8d8;
   backface-visibility: hidden;
   transition: transform 0.7s ease;
@@ -128,7 +128,7 @@ main {
 .card-front {
   display: grid;
   place-items: center;
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
   text-transform: capitalize;
   letter-spacing: 0.02em;
 }
@@ -138,10 +138,7 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  font-size: 0.98rem;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding-right: 8px;
+  font-size: 1rem;
 }
 
 .word-card.flipped .card-front {
