@@ -33,6 +33,8 @@ const saveButton = document.getElementById("save-word");
 const clearButton = document.getElementById("clear-form");
 const autoFillStatus = document.getElementById("auto-fill-status");
 
+const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+
 const wordInput = document.getElementById("word-input");
 const translationInput = document.getElementById("translation-input");
 const posInput = document.getElementById("pos-input");
@@ -175,7 +177,7 @@ async function fetchTranslation(word) {
   return translation === word ? "" : translation;
 }
 
-async function autoFill() {
+async async function autoFill() {
   const word = wordInput.value.trim();
   if (!word) {
     autoFillStatus.textContent = "請先輸入英文單字再按自動填入。";
@@ -208,7 +210,29 @@ async function autoFill() {
   }
 }
 
-function handleFormSubmit(event) {
+async function sendToGoogleSheet(entry) {
+  if (GAS_ENDPOINT_URL.includes("YOUR_SCRIPT_ID")) {
+    console.warn("GAS_ENDPOINT_URL 尚未設定，跳過後端送出。請替換成您的 Apps Script 網址。\n");
+    return;
+  }
+
+  const response = await fetch(GAS_ENDPOINT_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(entry),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`後端回應 ${response.status}: ${text}`);
+  }
+
+  await response.json().catch(() => null);
+}
+
+async function handleFormSubmit(event) {
   event.preventDefault();
   const word = wordInput.value.trim();
   if (!word) {
@@ -233,10 +257,18 @@ function handleFormSubmit(event) {
   }
 
   saveWords();
+
+  try {
+    await sendToGoogleSheet(entry);
+    autoFillStatus.textContent = "已儲存單字並送出後端。";
+  } catch (error) {
+    console.error(error);
+    autoFillStatus.textContent = `已儲存單字，但後端送出失敗：${error.message}`;
+  }
+
   renderWordList();
   renderCard();
   resetForm();
-  autoFillStatus.textContent = "已儲存單字。";
 }
 
 function handleListClick(event) {

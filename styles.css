@@ -139,10 +139,18 @@ main {
   grid-template-columns: 1fr;
   gap: 16px;
   font-size: 0.98rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 8px;
 }
 
 .word-card.flipped .card-front {
   transform: rotateY(180deg);
+}
+
+.card-back p {
+  word-break: break-word;
+  line-height: 1.6;
 }
 
 .word-card.flipped .card-back {
