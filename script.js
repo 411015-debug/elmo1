@@ -16,30 +16,55 @@ const DEFAULT_WORDS = [
   },
 ];
 
-const navStudy = document.getElementById("btn-study");
-const navManage = document.getElementById("btn-manage");
-const studyPage = document.getElementById("study-page");
-const managePage = document.getElementById("manage-page");
-const card = document.getElementById("word-card");
-const cardFront = document.getElementById("card-front");
-const cardBack = document.getElementById("card-back");
-const prevButton = document.getElementById("prev-word");
-const nextButton = document.getElementById("next-word");
-const randomButton = document.getElementById("random-word");
-const wordListEl = document.getElementById("word-list");
-const form = document.getElementById("word-form");
-const autoFillButton = document.getElementById("auto-fill");
-const saveButton = document.getElementById("save-word");
-const clearButton = document.getElementById("clear-form");
-const autoFillStatus = document.getElementById("auto-fill-status");
+let navStudy;
+let navManage;
+let studyPage;
+let managePage;
+let card;
+let cardFront;
+let cardBack;
+let prevButton;
+let nextButton;
+let randomButton;
+let wordListEl;
+let form;
+let autoFillButton;
+let saveButton;
+let clearButton;
+let autoFillStatus;
 
 const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
 
-const wordInput = document.getElementById("word-input");
-const translationInput = document.getElementById("translation-input");
-const posInput = document.getElementById("pos-input");
-const exampleInput = document.getElementById("example-input");
-const rootInput = document.getElementById("root-input");
+let wordInput;
+let translationInput;
+let posInput;
+let exampleInput;
+let rootInput;
+
+function bindElements() {
+  navStudy = document.getElementById("btn-study");
+  navManage = document.getElementById("btn-manage");
+  studyPage = document.getElementById("study-page");
+  managePage = document.getElementById("manage-page");
+  card = document.getElementById("word-card");
+  cardFront = document.getElementById("card-front");
+  cardBack = document.getElementById("card-back");
+  prevButton = document.getElementById("prev-word");
+  nextButton = document.getElementById("next-word");
+  randomButton = document.getElementById("random-word");
+  wordListEl = document.getElementById("word-list");
+  form = document.getElementById("word-form");
+  autoFillButton = document.getElementById("auto-fill");
+  saveButton = document.getElementById("save-word");
+  clearButton = document.getElementById("clear-form");
+  autoFillStatus = document.getElementById("auto-fill-status");
+
+  wordInput = document.getElementById("word-input");
+  translationInput = document.getElementById("translation-input");
+  posInput = document.getElementById("pos-input");
+  exampleInput = document.getElementById("example-input");
+  rootInput = document.getElementById("root-input");
+}
 
 let words = [];
 let activeIndex = 0;
@@ -330,10 +355,11 @@ function initEvents() {
 }
 
 function init() {
+  bindElements();
   loadWords();
   renderWordList();
   renderCard();
   initEvents();
 }
 
-init();
+window.addEventListener("DOMContentLoaded", init);
