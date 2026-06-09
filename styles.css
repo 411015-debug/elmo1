@@ -1,9 +1,9 @@
 :root {
   color-scheme: dark;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #071422;
-  color: #f4f7fb;
-  accent-color: #7de2ff;
+  font-family: "Georgia", "Times New Roman", serif;
+  background-color: #2b1b11;
+  color: #f4ead9;
+  accent-color: #c1925c;
 }
 
 * {
@@ -13,8 +13,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, rgba(125, 226, 255, 0.14), transparent 25%),
-    linear-gradient(180deg, #0b1f34 0%, #071422 100%);
+  background: radial-gradient(circle at top, rgba(255, 238, 215, 0.12), transparent 20%),
+    linear-gradient(180deg, #3a2417 0%, #1f140c 55%, #160f09 100%);
+  color: #f4ead9;
 }
 
 button,
@@ -31,7 +32,7 @@ button {
 .app-shell {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px 18px 40px;
+  padding: 30px 24px 48px;
 }
 
 .app-header {
@@ -40,42 +41,48 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(244, 234, 217, 0.15);
 }
 
 .app-header h1 {
-  margin: 0 0 8px;
-  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  letter-spacing: 0.04em;
 }
 
 .app-header p {
   margin: 0;
-  color: #cbd8eb;
+  color: #d7c7ae;
   max-width: 48rem;
 }
 
 nav {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .nav-button {
   min-width: 104px;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #e9f3ff;
-  transition: background 0.2s ease;
+  background: rgba(244, 234, 217, 0.12);
+  color: #f4ead9;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-button:hover,
 .nav-button.active {
-  background: #08a3f0;
+  background: rgba(193, 146, 92, 0.95);
+  color: #2b1b11;
+}
+
+.nav-button:hover {
+  transform: translateY(-1px);
 }
 
 main {
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .page {
@@ -89,27 +96,32 @@ main {
 .card-area {
   display: grid;
   place-items: center;
-  min-height: 410px;
-  padding: 16px;
+  min-height: 420px;
+  padding: 18px;
 }
 
 .word-card {
+  position: relative;
   width: min(420px, 100%);
-  height: 320px;
+  height: 340px;
   perspective: 1400px;
+  transform-style: preserve-3d;
 }
 
 .card-face {
   position: absolute;
   inset: 0;
-  border-radius: 26px;
-  box-shadow: 0 28px 80px rgba(6, 19, 34, 0.45);
-  background: linear-gradient(180deg, rgba(8, 163, 240, 0.18), rgba(3, 18, 43, 0.96));
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 28px;
-  color: #f6fbff;
-  transform-style: preserve-3d;
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(11, 7, 4, 0.45);
+  background: linear-gradient(180deg, #5d3f2b 0%, #3d2a1f 58%, #2d1b12 100%);
+  background-image:
+    linear-gradient(transparent 0%, transparent 30%, rgba(255, 255, 255, 0.05) 31%, transparent 32%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 15%, transparent 85%, rgba(255, 255, 255, 0.04) 100%),
+    linear-gradient(180deg, #5d3f2b 0%, #3d2a1f 58%, #2d1b12 100%);
+  border: 1px solid rgba(255, 235, 206, 0.16);
+  padding: 32px;
+  color: #f5e8d8;
+  backface-visibility: hidden;
   transition: transform 0.7s ease;
 }
 
@@ -118,14 +130,15 @@ main {
   place-items: center;
   font-size: clamp(2.2rem, 4vw, 3rem);
   text-transform: capitalize;
+  letter-spacing: 0.02em;
 }
 
 .card-back {
   transform: rotateY(180deg);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  font-size: 0.97rem;
+  gap: 16px;
+  font-size: 0.98rem;
 }
 
 .word-card.flipped .card-front {
@@ -142,10 +155,10 @@ main {
 }
 
 .card-back h3 {
-  font-size: 1rem;
+  font-size: 0.98rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #82d6ff;
+  letter-spacing: 0.16em;
+  color: #d7b28d;
 }
 
 .card-row {
@@ -156,20 +169,21 @@ main {
 
 .card-row span {
   background: rgba(255, 255, 255, 0.08);
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 999px;
   font-size: 0.92rem;
+  color: #f6ecd9;
 }
 
 .card-block {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-  padding: 16px;
+  border: 1px solid rgba(255, 235, 206, 0.16);
+  border-radius: 22px;
+  padding: 18px;
 }
 
 .card-block p {
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .study-controls {
@@ -177,65 +191,68 @@ main {
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .study-controls button {
-  min-width: 110px;
-  padding: 12px 16px;
+  min-width: 120px;
+  padding: 13px 18px;
   border-radius: 999px;
-  background: #0f6f9f;
-  color: #f8fbff;
-  transition: transform 0.15s ease;
+  background: rgba(193, 146, 92, 0.95);
+  color: #2b1b11;
+  transition: transform 0.15s ease, opacity 0.2s ease;
 }
 
 .study-controls button:hover {
   transform: translateY(-1px);
+  opacity: 0.95;
 }
 
 .panel {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  padding: 24px;
-  margin-bottom: 24px;
+  background: rgba(255, 248, 237, 0.06);
+  border: 1px solid rgba(255, 235, 206, 0.18);
+  border-radius: 30px;
+  padding: 28px;
+  margin-bottom: 26px;
+  backdrop-filter: blur(10px);
 }
 
 .panel-heading h2 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
+  color: #f8e9d5;
 }
 
 .panel-heading p {
   margin: 0;
-  color: #b8cee9;
+  color: #d7c1a3;
 }
 
 .word-form {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .word-form label {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   font-weight: 600;
-  color: #e5efff;
+  color: #f7e8d3;
 }
 
 .word-form input,
 .word-form textarea {
   width: 100%;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  color: #eef6ff;
-  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 235, 206, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  color: #2b1b11;
+  padding: 14px 16px;
   resize: vertical;
 }
 
 .word-form input::placeholder,
 .word-form textarea::placeholder {
-  color: #9eb4cd;
+  color: #b89d82;
 }
 
 .form-actions {
@@ -248,18 +265,18 @@ main {
 .form-actions button {
   padding: 12px 18px;
   border-radius: 999px;
-  background: #08a3f0;
-  color: #fff;
+  background: #c1925c;
+  color: #2b1b11;
 }
 
 .form-actions .secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: #c8def2;
+  background: rgba(255, 248, 237, 0.14);
+  color: #f4ead9;
 }
 
 .status-text {
-  color: #c8dce5;
-  font-size: 0.92rem;
+  color: #d2bc9e;
+  font-size: 0.95rem;
   margin: 0;
 }
 
@@ -268,7 +285,7 @@ main {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .word-list-item {
@@ -276,31 +293,32 @@ main {
   justify-content: space-between;
   align-items: center;
   gap: 14px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: rgba(255, 248, 237, 0.08);
+  border: 1px solid rgba(255, 235, 206, 0.16);
 }
 
 .word-list-item button {
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #dcecff;
+  background: rgba(193, 146, 92, 0.2);
+  color: #f4ead9;
 }
 
 .word-list-item button:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(193, 146, 92, 0.35);
 }
 
 .word-list-item span {
   flex: 1;
   min-width: 0;
+  color: #f2e5d0;
 }
 
 @media (max-width: 800px) {
   .app-shell {
-    padding: 18px 14px 30px;
+    padding: 22px 18px 34px;
   }
 
   .word-card {

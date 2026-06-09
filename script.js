@@ -70,13 +70,16 @@ function renderCard() {
   const entry = words[activeIndex];
   cardFront.textContent = entry.word;
   cardBack.innerHTML = `
-    <div class="card-row">
-      <span>${entry.translation || "—"}</span>
-      <span>${entry.pos || "—"}</span>
+    <div class="card-block">
+      <h3>中翻英</h3>
+      <p>${entry.translation || "—"} → ${entry.word}</p>
     </div>
     <div class="card-block">
       <h3>例句</h3>
       <p>${entry.example || "暫無例句。"}</p>
+    </div>
+    <div class="card-row">
+      <span>${entry.pos || "—"}</span>
     </div>
     <div class="card-block">
       <h3>字根分析</h3>
