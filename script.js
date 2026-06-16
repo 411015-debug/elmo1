@@ -34,7 +34,7 @@ let clearButton;
 let autoFillStatus;
 let openSheetLink;
 
-const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbzn2zcOtnTupukpuuSx4X-otbxWBK-ONSA9QauEudhQhwmPD4QThfzXKMbO8-qMAITOwg/exec";
+const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbzYCZRHny2WoI1fWao0m_JLszlsJNeYEYvmakOUTNpVfhKkKg_iZf5bSE3xVuKTyIPvzA/exec";
 const SHEET_URL = "https://docs.google.com/spreadsheets/d/1m6iTnbYf6yT554WLgCVE1LDCUhTAJK5ZQk29jlA9vmw/edit?usp=sharing";
 
 let wordInput;
