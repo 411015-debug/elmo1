@@ -32,8 +32,10 @@ let autoFillButton;
 let saveButton;
 let clearButton;
 let autoFillStatus;
+let openSheetLink;
 
-const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbzn2zcOtnTupukpuuSx4X-otbxWBK-ONSA9QauEudhQhwmPD4QThfzXKMbO8-qMAITOwg/exec";
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/1m6iTnbYf6yT554WLgCVE1LDCUhTAJK5ZQk29jlA9vmw/edit?usp=sharing";
 
 let wordInput;
 let translationInput;
@@ -58,6 +60,7 @@ function bindElements() {
   saveButton = document.getElementById("save-word");
   clearButton = document.getElementById("clear-form");
   autoFillStatus = document.getElementById("auto-fill-status");
+  openSheetLink = document.getElementById("open-sheet");
 
   wordInput = document.getElementById("word-input");
   translationInput = document.getElementById("translation-input");
@@ -352,6 +355,18 @@ function initEvents() {
   autoFillButton.addEventListener("click", autoFill);
   clearButton.addEventListener("click", resetForm);
   wordListEl.addEventListener("click", handleListClick);
+
+  if (openSheetLink) {
+    if (SHEET_URL.includes("YOUR_SHEET_ID")) {
+      openSheetLink.href = "#";
+      openSheetLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        alert("請在 script.js 將 SHEET_URL 替換為你的試算表網址。");
+      });
+    } else {
+      openSheetLink.href = SHEET_URL;
+    }
+  }
 }
 
 function init() {
